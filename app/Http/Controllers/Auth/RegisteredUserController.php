@@ -36,19 +36,23 @@ class RegisteredUserController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'phone' => ['required', 'string', 'digits:11', 'unique:users'],
+            'password' => ['required', 'confirmed', Rules\Password::defaults()->min(8)
+                ->mixedCase()
+                ->numbers()
+                ->uncompromised()],
         ]);
 
         $user = User::create([
-            'name' => $request->name,
+            'full_name' => $request->name,
             'email' => $request->email,
+            'phone' => $request->phone,
             'password' => Hash::make($request->password),
         ]);
 
         event(new Registered($user));
 
-        Auth::login($user);
-
-        return redirect(RouteServiceProvider::HOME);
+        return redirect()->route('login')
+            ->with('status', "REGISTRATION SUCCESSFUL! \n Please wait while we activate your account before proceeding to login.");
     }
 }
