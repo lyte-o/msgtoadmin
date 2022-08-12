@@ -8,7 +8,7 @@ class Dashboard extends Controller
 {
     public function index()
     {
-        $messages = auth()->user()->messages;
+        $messages = auth()->user()->messages()->latest()->paginate(self::PG_NUM);
 
         return view('pages.dashboard', compact('messages'));
     }

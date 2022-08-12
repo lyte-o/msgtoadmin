@@ -5,8 +5,6 @@
         </h2>
     </x-slot>
 
-    <x-auth-session-status class="mb-4 pt-6 text-center"/>
-
     @php
         function statusColor(string $status): string {
             return match ($status) {
@@ -18,8 +16,11 @@
 
     <div class="py-10 mx-3">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white p-6 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="pt-3 pb-7 border-b sm:flex justify-between items-center block">
+
+            <x-auth-session-status class="mb-7 text-center"/>
+
+            <div class="bg-white p-6 mt-7 overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="pt-4 pb-7 border-b sm:flex justify-between items-center block">
                     <h3 class="text-xl font-semibold">{{__('Showing all users registered on the platform.')}}</h3>
 
                     <div class="pr-0 md:pr-6 pt-4 md:pt-0">

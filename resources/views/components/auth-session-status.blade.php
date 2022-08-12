@@ -1,13 +1,16 @@
 @props(['status'])
 
 @if (session()->has('status'))
-    <div {{ $attributes->merge(['class' => 'font-medium text-sm text-green-600']) }}>
+    <div id="status-alert" {{ $attributes->merge(['class' => 'p-4 mb-4 text-sm font-semibold text-green-700 bg-green-100 rounded-lg']) }} role="alert">
         {{ session('status') }}
+        <button type="button" class="float-right" onclick="$('#status-alert').hide()" aria-label="Close">x</button>
     </div>
 @endif
 
 @if (session()->has('error'))
-    <div {{ $attributes->merge(['class' => 'font-medium text-sm text-red-600']) }}>
+    <div id="error-alert" {{ $attributes->merge(['class' => 'p-4 mb-4 text-sm font-semibold text-red-700 bg-red-100 rounded-lg']) }} role="alert">
         {{ session('error') }}
+        <button type="button" class="btn-close float-right" onclick="$('#error-alert').hide()" aria-label="Close"></button>
     </div>
 @endif
+
