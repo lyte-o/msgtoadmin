@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin;
 use App\Http\Controllers\Dashboard;
 use App\Http\Controllers\MessageController;
 use Illuminate\Support\Facades\Route;
@@ -22,7 +23,7 @@ Route::middleware('auth','active', 'role:user')->group(function () {
 });
 
 Route::middleware('auth', 'role:admin')->group(function () {
-
+    Route::get('/admin', [Admin::class, 'index'])->name('admin.index');
 });
 
 require __DIR__.'/auth.php';
