@@ -25,7 +25,7 @@ class Active
 
         if (!$user->isActive()) {
             $authGuard->logout();
-            return redirect()->route('login');
+            return redirect()->route('login')->with('error', trans('auth.inactive'));
         }
 
         return $next($request);
