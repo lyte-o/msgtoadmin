@@ -21,4 +21,24 @@ class Admin extends Controller
 
         return view('pages.admin.manage-users', compact('users'));
     }
+
+    public function updateStatus(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|exists:users,email'
+        ]);
+
+        try {
+            $user = User::query()->where('email', $request->email)->first();
+
+            $user->status = $user->status == 'pending' ? 'active' : 'pending';
+
+            $user->save();
+
+            return back()->with('status', $user->full_name . ' is now ' . strtoupper($user->status));
+        }
+        catch (\Exception $exception) {
+            return back()->with('error', $this->getExceptionMsg($exception));
+        }
+    }
 }

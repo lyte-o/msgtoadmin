@@ -60,14 +60,21 @@
                                         <td class="border-b border-slate-100 py-4 px-6">{{ $user->phone }}</td>
 
                                         <td class="border-b border-slate-100 py-4 px-6">
-                                                    <span class="bg-{{statusColor($user->status)}}-100 text-{{statusColor($user->status)}}-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded mr-2 dark:bg-{{statusColor($user->status)}}-200 dark:text-{{statusColor($user->status)}}-900">
+                                            <span class="bg-{{statusColor($user->status)}}-100 text-{{statusColor($user->status)}}-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded mr-2 dark:bg-{{statusColor($user->status)}}-200 dark:text-{{statusColor($user->status)}}-900">
 
-                                                          {{ ucfirst($user->status) }}
+                                                  {{ ucfirst($user->status) }}
 
-                                                        <span class="cursor-pointer ml-2" title="{{ $user->status == 'pending' ? 'Activate' : 'Make Pending' }}">
-                                                            <x-rotate-svg />
-                                                        </span>
-                                                    </span>
+                                                <form action="{{ route('update-status') }}" method="post" class="inline mt-1">
+                                                    @csrf
+                                                    <input type="hidden" value="{{ $user->email }}" name="email">
+                                                    <button type="submit" class="inline cursor-pointer ml-2"
+                                                            title="{{ $user->status == 'pending' ? 'Activate' : 'Make Pending' }}"
+                                                    >
+                                                        <x-rotate-svg />
+                                                    </button>
+                                                </form>
+
+                                            </span>
                                         </td>
 
                                         <td class="border-b border-slate-100 py-4 px-6">{{ $user->created_at->format('d-m-Y G:i') }}</td>

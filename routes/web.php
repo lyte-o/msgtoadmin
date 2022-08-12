@@ -25,6 +25,7 @@ Route::middleware('auth','active', 'role:user')->group(function () {
 Route::middleware('auth', 'role:admin')->group(function () {
     Route::get('/admin', [Admin::class, 'index'])->name('admin.index');
     Route::get('/admin/manage-users', [Admin::class, 'manageUsers'])->name('manage-users');
+    Route::post('/admin/manage-users/update-status', [Admin::class, 'updateStatus'])->name('update-status');
 });
 
 require __DIR__.'/auth.php';
