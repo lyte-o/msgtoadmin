@@ -5,22 +5,21 @@
         </h2>
     </x-slot>
 
-    <div class="py-12">
+    <div class="py-12 mx-3">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="flex justify-between bg-white px-6 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
+            <div class="sm:flex sm:justify-between block bg-white px-6 overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6">
                     {{__('Hello')}} <span class="font-bold">{{ ucwords(auth()->user()->full_name) }}</span>!
                 </div>
 
-
-                <x-link-button href="{{ route('create-message') }}" class="m-3">{{ __('Create New Message') }}</x-link-button>
+                <x-link-button href="{{ route('create-message') }}" class="m-3 p-4 px-6 sm:p-3">{{ __('New Message') }}</x-link-button>
             </div>
         </div>
     </div>
 
     <x-auth-session-status class="mb-4 text-center"/>
 
-    <div class="py-10">
+    <div class="py-10 mx-3">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white p-6 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="pt-3 pb-7 border-b">
