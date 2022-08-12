@@ -1,21 +1,11 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Admin Dashboard') }}
+            {{ __('Manage Users') }}
         </h2>
     </x-slot>
 
-    <div class="py-12 mx-3">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="sm:flex justify-between items-center block bg-white px-6 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="py-6 pl-4 pr-0">
-                    <p class="font-semibold">{{__('Hello Admin!')}}</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <x-auth-session-status class="mb-4 text-center"/>
+    <x-auth-session-status class="mb-4 pt-6 text-center"/>
 
     <div class="py-10 mx-3">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -33,25 +23,23 @@
                                     <table class="border-collapse table-auto w-full text-sm">
                                         <thead>
                                         <tr class="font-medium border-b">
-                                            <th class="p-4 pl-8 pt-0 pb-3 text-slate-700  text-left">Name</th>
                                             <th class="p-4 pl-8 pt-0 pb-3 text-slate-700  text-left">Date & Time</th>
                                             <th class="p-4 pr-8 pt-0 pb-3 text-slate-700  text-left">Message</th>
                                         </tr>
                                         </thead>
                                         <tbody class="bg-white ">
-                                            @if($messages->count() < 1)
-                                                <tr>
-                                                    <td class="border-b border-slate-100 text-center p-4 italic text-indigo-500" colspan="3">You have not sent any message to the Admin.</td>
-                                                </tr>
-                                            @else
-                                                @foreach($messages as $message)
-                                                    <tr>
-                                                        <td class="border-b border-slate-100  p-4 pr-8 text-slate-500 ">{{ $message->user->full_name }}</td>
-                                                        <td class="border-b border-slate-100  p-4 text-slate-500 ">{{ $message->created_at->format('d-m-Y G:i') }}</td>
-                                                        <td class="border-b border-slate-100  p-4 pr-8 text-slate-500 ">{{ $message->body }}</td>
-                                                    </tr>
-                                                @endforeach
-                                            @endif
+{{--                                            @if($messages->count() < 1)--}}
+{{--                                                <tr>--}}
+{{--                                                    <td class="border-b border-slate-100 text-center p-4 italic text-indigo-500" colspan="2">You have not sent any message to the Admin.</td>--}}
+{{--                                                </tr>--}}
+{{--                                            @else--}}
+{{--                                                @foreach($messages as $message)--}}
+{{--                                                    <tr>--}}
+{{--                                                        <td class="border-b border-slate-100  p-4 text-slate-500 ">{{ $message->created_at->format('d-m-Y G:i') }}</td>--}}
+{{--                                                        <td class="border-b border-slate-100  p-4 pr-8 text-slate-500 ">{{ $message->body }}</td>--}}
+{{--                                                    </tr>--}}
+{{--                                                @endforeach--}}
+{{--                                            @endif--}}
                                         </tbody>
                                     </table>
                                 </div>

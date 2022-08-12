@@ -27,9 +27,12 @@ class Role
             abort(403, "Log in to your account!");
         }
 
-        if ($authGuard->user()->role != $role) {
-            abort(404);
-        }
+//        Redirect to admin dashboard if admin tries to access home.
+        if ($request->routeIs('dashboard') && $authGuard->user()->role == 'admin')
+            return redirect()->route('admin.index');
+
+//        Throw not found if the route is not allowed for the user
+        if ($authGuard->user()->role != $role) abort(404);
 
         return $next($request);
     }

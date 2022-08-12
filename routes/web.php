@@ -24,6 +24,7 @@ Route::middleware('auth','active', 'role:user')->group(function () {
 
 Route::middleware('auth', 'role:admin')->group(function () {
     Route::get('/admin', [Admin::class, 'index'])->name('admin.index');
+    Route::get('/admin/manage-users', [Admin::class, 'manageUsers'])->name('manage-users');
 });
 
 require __DIR__.'/auth.php';
