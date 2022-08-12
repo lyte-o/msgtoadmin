@@ -13,7 +13,7 @@
                 </div>
 
 
-                <x-link-button href="#" class="m-3">{{ __('Create New Message') }}</x-link-button>
+                <x-link-button href="{{ route('create-message') }}" class="m-3">{{ __('Create New Message') }}</x-link-button>
             </div>
         </div>
     </div>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Dashboard;
+use App\Http\Controllers\MessageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,6 +17,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth')->group(function () {
     Route::get('/', [Dashboard::class, 'index'])->name('dashboard');
+    Route::view('/create-message', 'pages.message')->name('create-message');
+    Route::post('/send-message', [MessageController::class, 'store'])->name('send-message');
 });
 
 require __DIR__.'/auth.php';
