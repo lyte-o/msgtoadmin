@@ -23,44 +23,43 @@
                     <h3 class="text-xl font-semibold">{{__('Showing the latest messages recieved.')}}</h3>
                 </div>
 
-                <div class="pt-6">
-                    <div class="mt-4 mb-3">
-                        <div class="overflow-x-auto relative  rounded-md">
-                            <table class="w-full text-sm text-left text-gray-500">
-                                <thead class="text-xs text-gray-700 uppercase bg-gray-100">
+                <div class="pt-6 mt-4 mb-3">
+                    <div class="overflow-x-auto relative  rounded-md">
+                        <table class="min-w-max md:w-full text-sm text-left text-gray-500">
+                            <thead class="text-xs text-gray-700 uppercase bg-gray-100">
+                            <tr>
+                                <th scope="col" class="py-3 px-6">
+                                    Name
+                                </th>
+                                <th scope="col" class="py-3 px-6">
+                                    Email
+                                </th>
+                                <th scope="col" class="py-3 px-6">
+                                    Phone
+                                </th>
+                                <th scope="col" class="py-3 px-6">
+                                    Status
+                                </th>
+                                <th scope="col" class="py-3 px-6">
+                                    Date Registered
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @if($users->count() < 1)
                                 <tr>
-                                    <th scope="col" class="py-3 px-6">
-                                        Name
-                                    </th>
-                                    <th scope="col" class="py-3 px-6">
-                                        Email
-                                    </th>
-                                    <th scope="col" class="py-3 px-6">
-                                        Phone
-                                    </th>
-                                    <th scope="col" class="py-3 px-6">
-                                        Status
-                                    </th>
-                                    <th scope="col" class="py-3 px-6">
-                                        Date Registered
-                                    </th>
+                                    <td class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap" colspan="5">No user has been registered on this platform.</td>
                                 </tr>
-                                </thead>
-                                <tbody>
-                                    @if($users->count() < 1)
-                                        <tr>
-                                            <td class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap" colspan="5">No user has been registered on this platform.</td>
-                                        </tr>
-                                    @else
-                                        @foreach($users as $user)
-                                            <tr>
-                                                <th scope="row" class="border-b border-slate-100 py-4 px-6 font-medium text-gray-900 whitespace-nowrap">{{ $user->full_name }}</th>
+                            @else
+                                @foreach($users as $user)
+                                    <tr>
+                                        <th scope="row" class="border-b border-slate-100 py-4 px-6 font-medium text-gray-900 whitespace-nowrap">{{ $user->full_name }}</th>
 
-                                                <td class="border-b border-slate-100 py-4 px-6">{{ $user->email }}</td>
+                                        <td class="border-b border-slate-100 py-4 px-6">{{ $user->email }}</td>
 
-                                                <td class="border-b border-slate-100 py-4 px-6">{{ $user->phone }}</td>
+                                        <td class="border-b border-slate-100 py-4 px-6">{{ $user->phone }}</td>
 
-                                                <td class="border-b border-slate-100 py-4 px-6">
+                                        <td class="border-b border-slate-100 py-4 px-6">
                                                     <span class="bg-{{statusColor($user->status)}}-100 text-{{statusColor($user->status)}}-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded mr-2 dark:bg-{{statusColor($user->status)}}-200 dark:text-{{statusColor($user->status)}}-900">
 
                                                           {{ ucfirst($user->status) }}
@@ -69,15 +68,14 @@
                                                             <x-rotate-svg />
                                                         </span>
                                                     </span>
-                                                </td>
+                                        </td>
 
-                                                <td class="border-b border-slate-100 py-4 px-6">{{ $user->created_at->format('d-m-Y G:i') }}</td>
-                                            </tr>
-                                        @endforeach
-                                    @endif
-                                </tbody>
-                            </table>
-                        </div>
+                                        <td class="border-b border-slate-100 py-4 px-6">{{ $user->created_at->format('d-m-Y G:i') }}</td>
+                                    </tr>
+                                @endforeach
+                            @endif
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
