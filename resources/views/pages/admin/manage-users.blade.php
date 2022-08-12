@@ -22,58 +22,61 @@
                 <div class="pt-3 pb-7 border-b">
                     <h3 class="text-xl font-semibold">{{__('Showing the latest messages recieved.')}}</h3>
                 </div>
+
                 <div class="pt-6">
-                    <div class="mt-4 -mb-3">
-                        <div class="not-prose relative bg-slate-50 rounded-xl overflow-hidden /25">
-                            <div class="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(0deg,#fff,rgba(255,255,255,0.6))] dark:bg-grid-slate-700/25 dark:[mask-image:linear-gradient(0deg,rgba(255,255,255,0.1),rgba(255,255,255,0.5))]"></div>
-
-                            <div class="relative rounded-xl overflow-auto">
-                                <div class="shadow-sm overflow-hidden my-8">
-                                    <table class="border-collapse table-auto w-full text-sm">
-                                        <thead>
-                                        <tr class="font-medium border-b">
-                                            <th class="p-4 pl-8 pt-0 pb-3 text-slate-700  text-left">Name</th>
-                                            <th class="p-4 pl-8 pt-0 pb-3 text-slate-700  text-left">Email</th>
-                                            <th class="p-4 pl-8 pt-0 pb-3 text-slate-700  text-left">Phone</th>
-                                            <th class="p-4 pl-8 pt-0 pb-3 text-slate-700  text-left">Status</th>
-                                            <th class="p-4 pr-8 pt-0 pb-3 text-slate-700  text-left">Date Registered</th>
+                    <div class="mt-4 mb-3">
+                        <div class="overflow-x-auto relative  rounded-md">
+                            <table class="w-full text-sm text-left text-gray-500">
+                                <thead class="text-xs text-gray-700 uppercase bg-gray-100">
+                                <tr>
+                                    <th scope="col" class="py-3 px-6">
+                                        Name
+                                    </th>
+                                    <th scope="col" class="py-3 px-6">
+                                        Email
+                                    </th>
+                                    <th scope="col" class="py-3 px-6">
+                                        Phone
+                                    </th>
+                                    <th scope="col" class="py-3 px-6">
+                                        Status
+                                    </th>
+                                    <th scope="col" class="py-3 px-6">
+                                        Date Registered
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    @if($users->count() < 1)
+                                        <tr>
+                                            <td class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap" colspan="5">No user has been registered on this platform.</td>
                                         </tr>
-                                        </thead>
-                                        <tbody class="bg-white ">
-                                            @if($users->count() < 1)
-                                                <tr>
-                                                    <td class="border-b border-slate-100 text-center p-4 italic text-indigo-500" colspan="5">You have not sent any message to the Admin.</td>
-                                                </tr>
-                                            @else
-                                                @foreach($users as $user)
-                                                    <tr>
-                                                        <td class="border-b border-slate-100  p-4 pr-8 text-slate-500 ">{{ $user->full_name }}</td>
+                                    @else
+                                        @foreach($users as $user)
+                                            <tr>
+                                                <th scope="row" class="border-b border-slate-100 py-4 px-6 font-medium text-gray-900 whitespace-nowrap">{{ $user->full_name }}</th>
 
-                                                        <td class="border-b border-slate-100  p-4 pr-8 text-slate-500 ">{{ $user->email }}</td>
+                                                <td class="border-b border-slate-100 py-4 px-6">{{ $user->email }}</td>
 
-                                                        <td class="border-b border-slate-100  p-4 pr-8 text-slate-500 ">{{ $user->phone }}</td>
+                                                <td class="border-b border-slate-100 py-4 px-6">{{ $user->phone }}</td>
 
-                                                        <td class="border-b border-slate-100  p-4 pr-8 text-white ">
-                                                            <span class="bg-{{statusColor($user->status)}}-100 text-{{statusColor($user->status)}}-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded mr-2 dark:bg-{{statusColor($user->status)}}-200 dark:text-{{statusColor($user->status)}}-900">
+                                                <td class="border-b border-slate-100 py-4 px-6">
+                                                    <span class="bg-{{statusColor($user->status)}}-100 text-{{statusColor($user->status)}}-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded mr-2 dark:bg-{{statusColor($user->status)}}-200 dark:text-{{statusColor($user->status)}}-900">
 
-                                                                  {{ ucfirst($user->status) }}
+                                                          {{ ucfirst($user->status) }}
 
-                                                                <span class="cursor-pointer ml-2" title="{{ $user->status == 'pending' ? 'Activate' : 'Make Pending' }}">
-                                                                    <x-rotate-svg />
-                                                                </span>
-                                                            </span>
-                                                        </td>
+                                                        <span class="cursor-pointer ml-2" title="{{ $user->status == 'pending' ? 'Activate' : 'Make Pending' }}">
+                                                            <x-rotate-svg />
+                                                        </span>
+                                                    </span>
+                                                </td>
 
-                                                        <td class="border-b border-slate-100  p-4 text-slate-500 ">{{ $user->created_at->format('d-m-Y G:i') }}</td>
-                                                    </tr>
-                                                @endforeach
-                                            @endif
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-
-                            <div class="absolute inset-0 pointer-events-none border border-black/5 rounded-xl dark:border-white/5"></div>
+                                                <td class="border-b border-slate-100 py-4 px-6">{{ $user->created_at->format('d-m-Y G:i') }}</td>
+                                            </tr>
+                                        @endforeach
+                                    @endif
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
