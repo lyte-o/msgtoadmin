@@ -21,7 +21,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white p-6 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="pt-3 pb-7 border-b">
-                    <h3 class="text-xl font-semibold">{{__('Showing the latest messages recieved.')}}</h3>
+                    <h3 class="text-xl font-semibold">{{__('Showing all messages received from the latest.')}}</h3>
                 </div>
                 <div class="pt-6">
                     <div class="mt-4 -mb-3">

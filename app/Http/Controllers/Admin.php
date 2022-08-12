@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Message;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class Admin extends Controller
@@ -16,6 +17,8 @@ class Admin extends Controller
 
     public function manageUsers()
     {
-        return view('pages.admin.manage-users');
+        $users = User::query()->latest()->paginate(self::PG_NUM);
+
+        return view('pages.admin.manage-users', compact('users'));
     }
 }
