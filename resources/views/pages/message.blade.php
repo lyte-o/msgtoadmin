@@ -14,7 +14,11 @@
                 <div>
                     <x-label for="message" class="font-semibold pb-3" :value="__('Enter Message')" />
 
-                    <textarea id="message" class="block mt-1 w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" type="message" name="message" required autofocus>{{old('message')}}</textarea>
+                    <textarea id="message" class="block mt-1 w-full @error('message') border-red-600 focus:border-red-300 focus:ring-red-200 @enderror rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                              type="message"
+                              name="message"
+                              required autofocus
+                    >{{old('message')}}</textarea>
                 </div>
                 <x-form-input-error :inputName="$error = 'message'" />
 
