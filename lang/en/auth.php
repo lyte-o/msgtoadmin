@@ -16,6 +16,6 @@ return [
     'failed' => 'These credentials do not match our records.',
     'password' => 'The provided password is incorrect.',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
-    'inactive' => 'Your account is currently INACTIVE. Kindly wait for the admin to activate your account.'
+    'inactive' => 'Your account status is currently PENDING. Kindly wait for the admin to activate your account.'
 
 ];
