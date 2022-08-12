@@ -18,7 +18,9 @@
         </div>
     </div>
 
-    <div class="py-12">
+    <x-auth-session-status class="mb-4 text-center"/>
+
+    <div class="py-10">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white p-6 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="pt-3 pb-7 border-b">

@@ -19,7 +19,7 @@ class MessageController extends Controller
                 'body' => $request->message
             ]);
 
-            return redirect()->route('dashboard')->with('status', 'Your message has been successfully sent to the admin!');
+            return redirect()->route('dashboard')->with('status', 'Your message has been successfully sent to the Admin!');
         }
         catch (\Exception $exception) {
             return back()->with($this->getExceptionMsg($exception));
