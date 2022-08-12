@@ -19,8 +19,39 @@
     <div class="py-10 mx-3">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white p-6 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="pt-3 pb-7 border-b">
-                    <h3 class="text-xl font-semibold">{{__('Showing the latest messages recieved.')}}</h3>
+                <div class="pt-3 pb-7 border-b sm:flex justify-between items-center block">
+                    <h3 class="text-xl font-semibold">{{__('Showing all users registered on the platform.')}}</h3>
+
+                    <div class="pr-0 md:pr-6 pt-4 md:pt-0">
+                        <div class="inline-block cursor-pointer ">
+                            <x-dropdown align="left">
+                                <x-slot:trigger>
+                                    <x-link-button class="px-7 p-3 sm:p-3 font-bold">
+                                        {{ request()->has('status') ? __(ucfirst(request('status'))) : __('Filter By') }}
+                                        <span class="pl-2"><x-dropdown-svg /></span>
+                                    </x-link-button>
+                                </x-slot:trigger>
+                                <x-slot:content>
+                                    <x-dropdown-link href="{{ route('manage-users', ['status' => 'pending'])}}"
+                                                     class="font-semibold text-yellow-600 hover:bg-yellow-100 focus:bg-yellow-100"
+                                    >
+                                        Pending Users
+                                    </x-dropdown-link>
+                                    <x-dropdown-link href="{{ route('manage-users', ['status' => 'active'])}}"
+                                                     class="font-semibold text-green-700 hover:bg-green-100 focus:bg-green-100"
+                                    >
+                                        Active Users
+                                    </x-dropdown-link>
+                                </x-slot:content>
+                            </x-dropdown>
+                        </div>
+
+                        <div class="inline-block">
+                            <x-link-button href="{{ route('manage-users') }}" class="ml-2 px-7 p-3 sm:p-3 bg-slate-400 hover:bg-slate-600 font-bold">
+                                {{ __('Clear Filter') }}
+                            </x-link-button>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="pt-6 mt-4 mb-3">
@@ -48,7 +79,9 @@
                             <tbody>
                             @if($users->count() < 1)
                                 <tr>
-                                    <td class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap" colspan="5">No user has been registered on this platform.</td>
+                                    <td class="py-4 px-6 font-semibold text-purple-500 whitespace-nowrap text-center" colspan="5">
+                                        {{ request()->has('status') ? 'No user is currently ' . ucfirst(request('status')): 'No user has been registered on this platform.' }}
+                                    </td>
                                 </tr>
                             @else
                                 @foreach($users as $user)

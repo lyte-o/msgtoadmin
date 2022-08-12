@@ -15,9 +15,18 @@ class Admin extends Controller
         return view('pages.admin.dashboard', compact('messages'));
     }
 
-    public function manageUsers()
+    public function manageUsers(Request $request)
     {
-        $users = User::query()->latest()->paginate(self::PG_NUM);
+        $users = User::query()->whereNotIn('role', ['admin']);
+
+        if ($request->has('status')) {
+            if (!in_array(strtolower($request->status), ['pending', 'active']))
+                return redirect()->route('manage-users')->with('error', 'Invalid Status!');
+
+            $users->where('status', $request->status);
+        }
+
+        $users = $users->latest()->paginate(self::PG_NUM);
 
         return view('pages.admin.manage-users', compact('users'));
     }
