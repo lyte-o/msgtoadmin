@@ -22,6 +22,9 @@ return new class extends Migration
             $table->timestamp('last_used_at')->nullable();
             $table->timestamp('expires_at')->nullable();
             $table->timestamps();
+
+            $table->index([\Illuminate\Support\Facades\DB::raw('tokenable_type(191)')]);
+            $table->index([\Illuminate\Support\Facades\DB::raw('tokenable_id(191)')]);
         });
     }
 
