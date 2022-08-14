@@ -10,7 +10,7 @@
             <div class="sm:flex justify-between items-center block bg-white mb-10 px-6 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="py-6 pl-4 pr-0">
                     <p class="font-semibold">{{__('Hello Admin!')}}</p>
-                    <p>To see the list of registered users and their status, go to <em class="italic font-semibold">Manage Users</em></p>
+                    <p class="mt-1">To see the list of registered users and their status, go to <a href="{{ route('manage-users') }}" class="hover:underline hover:text-purple-600 focus:text-purple-600 italic "><em>Manage Users</em></a></p>
                 </div>
             </div>
 
@@ -34,7 +34,7 @@
                                 <tbody>
                                 @if($messages->count() < 1)
                                     <tr>
-                                        <td class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap" colspan="3">You have not received any message from users.</td>
+                                        <td class="py-4 px-6 font-semibold text-purple-500 whitespace-nowrap text-center" colspan="3">You have not received any message from users.</td>
                                     </tr>
                                 @else
                                     @foreach($messages as $message)

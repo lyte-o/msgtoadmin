@@ -19,6 +19,8 @@ class DatabaseSeeder extends Seeder
              'full_name'    => 'Admin',
              'email'        => 'support@msgtoadmin.com',
              'phone'        => '08123456789',
+             'status'       => 'active',
+             'role'         => 'admin',
              'password'     => bcrypt('adminmsg2022')
          ]);
 
