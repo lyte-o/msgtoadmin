@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -17,13 +18,16 @@ return new class extends Migration
             $table->id();
             $table->string('full_name');
             $table->string('email')->unique();
-            $table->string('phone')->unique();
+            $table->string('phone', '11')->unique();
             $table->enum('status', ['active', 'pending'])->default('pending');
             $table->enum('role', ['admin', 'user'])->default('user');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+
+            $table->unique([DB::raw('email(191)')]);
+            $table->unique([DB::raw('phone(191)')]);
         });
     }
 
