@@ -10,7 +10,7 @@
 @if (session()->has('error'))
     <div id="error-alert" {{ $attributes->merge(['class' => 'p-4 mb-4 text-sm font-semibold text-red-700 bg-red-100 rounded-lg']) }} role="alert">
         {{ session('error') }}
-        <button type="button" class="btn-close float-right" onclick="$('#error-alert').hide()" aria-label="Close"></button>
+        <button type="button" class="btn-close float-right" onclick="$('#error-alert').hide()" aria-label="Close">x</button>
     </div>
 @endif
 
