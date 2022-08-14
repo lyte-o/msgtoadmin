@@ -17,7 +17,7 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('full_name');
-            $table->string('email')->unique();
+            $table->string('email');
             $table->string('phone', '11')->unique();
             $table->enum('status', ['active', 'pending'])->default('pending');
             $table->enum('role', ['admin', 'user'])->default('user');
@@ -27,7 +27,6 @@ return new class extends Migration
             $table->timestamps();
 
             $table->unique([DB::raw('email(191)')]);
-            $table->unique([DB::raw('phone(191)')]);
         });
     }
 
