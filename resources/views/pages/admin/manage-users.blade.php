@@ -1,4 +1,13 @@
 <x-app-layout>
+
+    @section('page-style')
+        <style>
+            .bg-yellow-100 {
+                background-color: #fdf9c3 !important;
+            }
+        </style>
+    @endsection
+
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Manage Users') }}
@@ -94,7 +103,7 @@
                                         <td class="border-b border-slate-100 py-4 px-6">{{ $user->phone }}</td>
 
                                         <td class="border-b border-slate-100 py-4 px-6">
-                                            <span class="bg-{{statusColor($user->status)}}-100 text-{{statusColor($user->status)}}-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded mr-2 dark:bg-{{statusColor($user->status)}}-200 dark:text-{{statusColor($user->status)}}-900">
+                                            <span class="bg-{{statusColor($user->status)}}-100 text-{{statusColor($user->status)}}-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded mr-2">
 
                                                   {{ ucfirst($user->status) }}
 
