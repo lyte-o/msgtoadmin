@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\TaskRequest;
 use App\Models\Category;
+use App\Models\Task;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -40,6 +41,15 @@ class TaskController extends Controller
         catch (\Exception $exception) {
             return back()->with($this->getExceptionMsg($exception));
         }
+    }
+
+    /**
+     */
+    public function delete(Task $task)
+    {
+        $task->delete();
+
+        return back()->with('error', 'Task has been deleted!');
     }
 
     private function getDate(string $date)
