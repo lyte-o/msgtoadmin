@@ -26,6 +26,8 @@ Route::middleware('auth','active', 'role:user')->group(function () {
 
     Route::controller(TaskController::class)->prefix('tasks')->name('tasks.')->group(function () {
         Route::get('/', 'index')->name('index');
+        Route::get('/add-new-task', 'create')->name('create');
+        Route::post('/submit-new-task', 'store')->name('store');
     });
 });
 

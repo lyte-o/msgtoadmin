@@ -21,7 +21,7 @@
                             <h3 class="text-xl font-semibold">{{ __('Showing the list of all your tasks.') }}</h3>
                         </div>
                         <div>
-                            <x-link-button href="{{ route('create-message') }}" class="m-3 p-4 px-6 sm:p-3">{{ __('Add New Task') }}</x-link-button>
+                            <x-link-button href="{{ route('tasks.create') }}" class="m-3 p-4 px-6 sm:p-3">{{ __('Add New Task') }}</x-link-button>
                         </div>
                     </div>
                     <div class="pt-6 mt-4">
@@ -30,16 +30,19 @@
                                 <thead class="text-xs text-gray-700 uppercase bg-gray-100">
                                 <tr>
                                     <th scope="col" class="py-3 px-6">
+                                        S/N
+                                    </th>
+                                    <th scope="col" class="py-3 px-6">
                                         Title
                                     </th>
                                     <th>
                                         Category
                                     </th>
                                     <th scope="col" class="py-3 px-6">
-                                        Status
+                                        Deadline
                                     </th>
                                     <th scope="col" class="py-3 px-6">
-                                        Deadline
+                                        Status
                                     </th>
                                     <th scope="col" class="py-3 px-6">
                                         Action
@@ -54,31 +57,32 @@
                                         </td>
                                     </tr>
                                 @else
+                                    @php
+                                        $n = 0;
+                                    @endphp
                                     @foreach($tasks as $task)
+                                        {{ $n++ }}
                                         <tr>
-                                            <th scope="row" class="border-b border-slate-100 py-4 px-6 font-medium text-gray-900 whitespace-nowrap">{{ $task->title }}</th>
+                                            <th scope="row" class="border-b border-slate-100 py-4 px-6 font-medium text-gray-900 whitespace-nowrap">{{ $n }}</th>
 
-                                            <td class="border-b border-slate-100 py-4 px-6">{{ $task->category->name }}</td>
+                                            <td class="border-b border-slate-100 py-4 px-6">{{ $task->title }}</td>
                                             <td class="border-b border-slate-100 py-4 px-6">
-                                                <span class="bg-{{ statusColor($task->is_active) }}-100 text-{{statusColor($task->is_active)}}-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded mr-2">
-                                                    {{ statusValue($task->is_active) }}
-                                                    <form action="{{ route('admin.category.update-status', $task->slug) }}" method="post" class="inline mt-1">
-                                                        @csrf
-                                                        @method('PUT')
-                                                        <button type="submit" class="inline cursor-pointer ml-2"
-                                                                title="{{ $task->is_active ? 'Deactivate' : 'Activate' }}"
-                                                        >
-                                                            <x-icon />
-                                                        </button>
-                                                    </form>
+                                                <span class="bg-indigo-500 text-white font-medium inline-flex items-center px-2.5 py-0.5 rounded mr-2">{{ $task->category->name }}</span>
+                                            </td>
+                                            <td class="border-b border-slate-100 py-4 px-6">{{ $task->deadline->format('Y-m-d H:i') }}</td>
+                                            <td class="border-b border-slate-100 py-4 px-6">
+                                                <span class="bg-{{ statusColor($task->status) }}-100 text-{{statusColor($task->status)}}-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded mr-2">
+                                                    {{ $task->status }}
                                                 </span>
                                             </td>
 
                                             <td class="border-b border-slate-100 py-4 px-6">
+                                                <x-link-button href="{{ route('tasks.create') }}" class="mx-2 p-1">{{ __('Edit') }}</x-link-button>
                                                 <form action="{{ route('update-status') }}" method="post" class="inline mt-1">
                                                     @csrf
-                                                    <span onclick="event.preventDefault();
-                                                this.closest('form').submit();" class="text-red-600 hover:text-red-400 hover:underline">Delete</span>
+                                                    <x-link-button onclick="event.preventDefault();
+                                                this.closest('form').submit();" class="btn btn-link inline-flex justify-center items-center px-4 bg-red-400 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-700 active:bg-red-900 focus:outline-none cursor-pointer focus:border-red-900 focus:ring ring-red-300 disabled:opacity-25 transition ease-in-out duration-150 mx-2 p-1" color="red">Delete</x-link-button>
+
                                                 </form>
                                             </td>
                                         </tr>

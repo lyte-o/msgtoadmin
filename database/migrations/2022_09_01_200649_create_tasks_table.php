@@ -15,11 +15,11 @@ return new class extends Migration
     {
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('user_id')->unique();
-            $table->unsignedInteger('category_id')->unique();
+            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('category_id');
             $table->string('title');
             $table->string('slug');
-            $table->boolean('is_completed')->default(false);
+            $table->enum('status', ['NOT STARTED', 'ONGOING', 'COMPLETED'])->default('NOT STARTED');
             $table->timestamp('deadline');
             $table->timestamps();
         });

@@ -25,4 +25,9 @@ class Category extends Model
     {
         return $this->hasMany(Task::class);
     }
+
+    public function scopeSlug($query, $value)
+    {
+        return $query->where('slug', $value);
+    }
 }
