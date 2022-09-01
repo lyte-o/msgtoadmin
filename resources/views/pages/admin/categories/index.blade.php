@@ -19,18 +19,17 @@
                 <div class="bg-white px-4 py-6 overflow-hidden shadow-sm sm:rounded-lg">
                     <form action="{{ route('admin.category.store') }}" method="POST">
                         @csrf
-                        <div class="grid grid-cols-8">
-                            <div class="cols-span-2">
+                        <div class="block sm:grid sm:grid-cols-8">
+                            <div class="col-span-5 sm:col-span-2 md:col-span-1">
                                 <x-label for="name" class="font-semibold pb-3" :value="__('Category Name')" />
                             </div>
                             <div class="col-span-4">
-                                <x-input type="text" id="name" name="name" class="block w-full" placeholder="Enter the name of the new category for tasks" value="{{ old('name') }}"/>
+                                <x-input type="text" id="name" name="name" class="block w-full" placeholder="Enter the name of a new task category" value="{{ old('name') }}"/>
                                 <x-form-input-error :inputName="$error = 'name'" />
                             </div>
 
-                            <div class="flex items-center justify-end">
-
-                                <x-button class="ml-3">
+                            <div class="col-span-2 mx-auto pt-2">
+                                <x-button class="w-full sm:w-auto justify-center">
                                     {{ __('Send') }}
                                 </x-button>
                             </div>
