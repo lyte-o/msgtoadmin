@@ -32,6 +32,7 @@ Route::middleware('auth', 'role:admin')->group(function () {
         Route::name('admin.')->group(function () {
             Route::controller(CategoryController::class)->prefix('categories')->name('category.')->group(function () {
                 Route::get('/', 'index')->name('index');
+                Route::post('/store', 'store')->name('store');
                 Route::put('/{category}/update-status', 'updateStatus')->name('update-status');
             });
         });

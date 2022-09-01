@@ -17,15 +17,15 @@
                     Add New Category
                 </div>
                 <div class="bg-white px-4 py-6 overflow-hidden shadow-sm sm:rounded-lg">
-                    <form action="">
+                    <form action="{{ route('admin.category.store') }}" method="POST">
                         @csrf
                         <div class="grid grid-cols-8">
                             <div class="cols-span-2">
-                                <x-label for="message" class="font-semibold pb-3" :value="__('Category Name')" />
+                                <x-label for="name" class="font-semibold pb-3" :value="__('Category Name')" />
                             </div>
                             <div class="col-span-4">
-                                <x-input type="text" id="message" class="block w-full" placeholder="Enter the name of the new category for tasks" value="{{ old('message') }}"/>
-                                <x-form-input-error :inputName="$error = 'message'" />
+                                <x-input type="text" id="name" name="name" class="block w-full" placeholder="Enter the name of the new category for tasks" value="{{ old('name') }}"/>
+                                <x-form-input-error :inputName="$error = 'name'" />
                             </div>
 
                             <div class="flex items-center justify-end">

@@ -16,7 +16,18 @@ class CategoryController extends Controller
 
     public function store(Request $request)
     {
+        $data = $request->validate(['name' => 'required|string|unique:categories,name']);
 
+        try {
+              $data['slug'] = str($data['name'])->slug();
+
+              Category::query()->create($data);
+
+              return back()->with('success', 'New Category added!');
+        }
+        catch (\Exception $exception) {
+            return back()->with($this->getExceptionMsg($exception));
+        }
     }
 
     public function updateStatus(Category $category)
