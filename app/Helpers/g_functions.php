@@ -8,3 +8,8 @@ function statusColor(string|bool $status): string {
         default => 'indigo'
     };
 }
+
+function statusValue(bool $value): string
+{
+    return  $value ? 'ACTIVE' : 'INACTIVE';
+}

@@ -77,9 +77,10 @@
 
                                             <td class="border-b border-slate-100 py-4 px-6">
                                             <span class="bg-{{ statusColor($category->is_active) }}-100 text-{{statusColor($category->is_active)}}-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded mr-2">
-                                                {{ $category->is_active ? 'ACTIVE' : 'INACTIVE' }}
-                                                <form action="{{ route('update-status') }}" method="post" class="inline mt-1">
+                                                {{ statusValue($category->is_active) }}
+                                                <form action="{{ route('admin.category.update-status', $category->slug) }}" method="post" class="inline mt-1">
                                                     @csrf
+                                                    @method('PUT')
                                                     <button type="submit" class="inline cursor-pointer ml-2"
                                                             title="{{ $category->is_active ? 'Deactivate' : 'Activate' }}"
                                                     >
