@@ -1,4 +1,4 @@
-<svg version="1.1" class="w-3 h-3" id="Ebene_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
+   <svg version="1.1" class="w-3 h-3" id="Ebene_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
 <g>
     <path d="M30,2c0,1.104,0.896,2,2,2c7.479,0,14.51,2.913,19.798,8.202C57.087,17.49,60,24.521,60,32c0,7.381-2.842,14.323-8,19.587
 		V46c0-1.104-0.896-2-2-2s-2,0.896-2,2v12h12c1.104,0,2-0.896,2-2s-0.896-2-2-2h-4.776C60.885,48.032,64,40.257,64,32
@@ -8,3 +8,4 @@
 		s0.896,2,2,2h4.776C3.115,15.968,0,23.743,0,32C0,40.547,3.329,48.583,9.374,54.627z"/>
 </g>
 </svg>
+

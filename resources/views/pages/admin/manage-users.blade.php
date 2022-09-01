@@ -14,15 +14,6 @@
         </h2>
     </x-slot>
 
-    @php
-        function statusColor(string $status): string {
-            return match ($status) {
-                'pending' => 'yellow',
-                'active'  => 'green',
-            };
-        }
-    @endphp
-
     <div class="py-10 mx-3">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
@@ -113,7 +104,7 @@
                                                     <button type="submit" class="inline cursor-pointer ml-2"
                                                             title="{{ $user->status == 'pending' ? 'Activate' : 'Make Pending' }}"
                                                     >
-                                                        <x-rotate-svg />
+                                                        <x-icon />
                                                     </button>
                                                 </form>
 

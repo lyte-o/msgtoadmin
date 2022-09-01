@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\Dashboard;
 use App\Http\Controllers\MessageController;
 use Illuminate\Support\Facades\Route;
@@ -23,9 +24,18 @@ Route::middleware('auth','active', 'role:user')->group(function () {
 });
 
 Route::middleware('auth', 'role:admin')->group(function () {
-    Route::get('/admin', [Admin::class, 'index'])->name('admin.index');
-    Route::get('/admin/manage-users', [Admin::class, 'manageUsers'])->name('manage-users');
-    Route::post('/admin/manage-users/update-status', [Admin::class, 'updateStatus'])->name('update-status');
+    Route::prefix('admin')->group(function () {
+        Route::get('/', [Admin::class, 'index'])->name('admin.index');
+        Route::get('/manage-users', [Admin::class, 'manageUsers'])->name('manage-users');
+        Route::post('/manage-users/update-status', [Admin::class, 'updateStatus'])->name('update-status');
+
+        Route::name('admin.')->group(function () {
+            Route::controller(CategoryController::class)->prefix('categories')->name('category.')->group(function () {
+                Route::get('/', 'index')->name('index');
+            });
+        });
+    });
+
 });
 
 require __DIR__.'/auth.php';
