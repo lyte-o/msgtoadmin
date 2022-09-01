@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth','active', 'role:user')->group(function () {
     Route::get('/', [Dashboard::class, 'index'])->name('dashboard');
+    Route::get('/contact-admin', [MessageController::class, 'index'])->name('contact-admin');
     Route::view('/create-message', 'pages.message')->name('create-message');
     Route::post('/send-message', [MessageController::class, 'store'])->name('send-message');
 });
@@ -35,6 +36,7 @@ Route::middleware('auth', 'role:admin')->group(function () {
                 Route::post('/store', 'store')->name('store');
                 Route::put('/{category}/update-status', 'updateStatus')->name('update-status');
             });
+
         });
     });
 

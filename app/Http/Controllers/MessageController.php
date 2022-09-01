@@ -6,6 +6,13 @@ use Illuminate\Http\Request;
 
 class MessageController extends Controller
 {
+    public function index()
+    {
+        $messages = auth()->user()->messages()->latest()->paginate(self::PG_NUM);
+
+        return view('pages.contact-admin', compact('messages'));
+    }
+
     public function store(Request $request)
     {
         $request->validate([

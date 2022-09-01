@@ -12,4 +12,11 @@ class Dashboard extends Controller
 
         return view('pages.dashboard', compact('messages'));
     }
+
+    public function contactAdmin()
+    {
+        $messages = auth()->user()->messages()->latest()->paginate(self::PG_NUM);
+
+        return view('pages.contact-admin', compact('messages'));
+    }
 }
