@@ -11,7 +11,7 @@ class CategoryController extends Controller
     {
         $categories = Category::query()->orderBy('name')->get();
 
-        return view('pages.admin.categories.index', compact('categories'));
+        return view('pages.admin.categories', compact('categories'));
     }
 
     public function store(Request $request)

@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\Dashboard;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\TaskController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,6 +23,10 @@ Route::middleware('auth','active', 'role:user')->group(function () {
     Route::get('/contact-admin', [MessageController::class, 'index'])->name('contact-admin');
     Route::view('/create-message', 'pages.message')->name('create-message');
     Route::post('/send-message', [MessageController::class, 'store'])->name('send-message');
+
+    Route::controller(TaskController::class)->prefix('tasks')->name('tasks.')->group(function () {
+        Route::get('/', 'index')->name('index');
+    });
 });
 
 Route::middleware('auth', 'role:admin')->group(function () {
@@ -36,7 +41,6 @@ Route::middleware('auth', 'role:admin')->group(function () {
                 Route::post('/store', 'store')->name('store');
                 Route::put('/{category}/update-status', 'updateStatus')->name('update-status');
             });
-
         });
     });
 
