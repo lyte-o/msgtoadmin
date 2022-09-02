@@ -43,4 +43,17 @@ class CategoryController extends Controller
             return back()->with($this->getExceptionMsg($exception));
         }
     }
+
+    public function delete(Category $category)
+    {
+        try {
+            $category->tasks()->delete();
+            $category->delete();
+
+            return back()->with('success', 'Category has been deleted!');
+        }
+        catch (\Exception $exception) {
+            return back()->with($this->getExceptionMsg($exception));
+        }
+    }
 }

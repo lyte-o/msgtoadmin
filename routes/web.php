@@ -50,6 +50,7 @@ Route::middleware('auth', 'role:admin')->group(function () {
                 Route::get('/', 'index')->name('index');
                 Route::post('/store', 'store')->name('store');
                 Route::put('/{category}/update-status', 'updateStatus')->name('update-status');
+                Route::delete('/{category}/delete', 'delete')->name('delete');
             });
         });
     });

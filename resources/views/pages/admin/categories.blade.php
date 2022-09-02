@@ -54,18 +54,19 @@
                         <div class="overflow-x-auto relative  rounded-md">
                             <table class="min-w-max md:w-full text-sm text-left text-gray-500">
                                 <thead class="text-xs text-gray-700 uppercase bg-gray-100">
-                                <tr>
-                                    <th scope="col" class="py-3 px-6">
-                                        Name
-                                    </th>
-                                    <th scope="col" class="py-3 px-6">
-                                        Status
-                                    </th>
-                                    <th scope="col" class="py-3 px-6">
-                                        Action
-                                    </th>
-                                </tr>
+                                    <tr>
+                                        <th scope="col" class="py-3 px-6">
+                                            Name
+                                        </th>
+                                        <th scope="col" class="py-3 px-6">
+                                            Status
+                                        </th>
+                                        <th scope="col" class="py-3 px-6">
+                                            Action
+                                        </th>
+                                    </tr>
                                 </thead>
+
                                 <tbody>
                                 @if($categories->count() < 1)
                                     <tr>
@@ -79,25 +80,29 @@
                                             <th scope="row" class="border-b border-slate-100 py-4 px-6 font-medium text-gray-900 whitespace-nowrap">{{ $category->name }}</th>
 
                                             <td class="border-b border-slate-100 py-4 px-6">
-                                            <span class="bg-{{ statusColor($category->is_active) }}-100 text-{{statusColor($category->is_active)}}-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded mr-2">
-                                                {{ statusValue($category->is_active) }}
-                                                <form action="{{ route('admin.category.update-status', $category->slug) }}" method="post" class="inline mt-1">
-                                                    @csrf
-                                                    @method('PUT')
-                                                    <button type="submit" class="inline cursor-pointer ml-2"
-                                                            title="{{ $category->is_active ? 'Deactivate' : 'Activate' }}"
-                                                    >
-                                                        <x-icon />
-                                                    </button>
-                                                </form>
-                                            </span>
+                                                <span class="bg-{{ statusColor($category->is_active) }}-100 text-{{statusColor($category->is_active)}}-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded mr-2">
+                                                    {{ statusValue($category->is_active) }}
+                                                    <form action="{{ route('admin.category.update-status', $category->slug) }}" method="post" class="inline mt-1">
+                                                        @csrf
+                                                        @method('PUT')
+
+                                                        <button type="submit" class="inline cursor-pointer ml-2"
+                                                                title="{{ $category->is_active ? 'Deactivate' : 'Activate' }}"
+                                                        >
+                                                            <x-icon />
+                                                        </button>
+                                                    </form>
+                                                </span>
                                             </td>
 
                                             <td class="border-b border-slate-100 py-4 px-6">
-                                                <form action="{{ route('update-status') }}" method="post" class="inline mt-1">
+                                                <form action="{{ route('admin.category.delete', $category->slug) }}" method="post" class="inline mt-1">
+                                                    @method('DELETE')
                                                     @csrf
-                                                    <span onclick="event.preventDefault();
-                                                this.closest('form').submit();" class="text-red-600 hover:text-red-400 hover:underline">Delete</span>
+
+                                                    <a onclick="event.preventDefault();
+                                                this.closest('form').submit();"
+                                                       class="btn btn-link inline-flex justify-center items-center px-4 bg-red-400 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-700 active:bg-red-900 focus:outline-none cursor-pointer focus:border-red-900 focus:ring ring-red-300 disabled:opacity-25 transition ease-in-out duration-150 mx-2 p-1">Delete</a>
                                                 </form>
                                             </td>
                                         </tr>
