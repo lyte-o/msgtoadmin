@@ -7,6 +7,7 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Session;
 use JetBrains\PhpStorm\ArrayShape;
 
 class Controller extends BaseController
@@ -20,6 +21,7 @@ class Controller extends BaseController
     protected function getExceptionMsg(\Exception $exception): array
     {
         $msg = $exception->getMessage();
+
         if (env('APP_ENV') == 'production') {
             $msg = 'An error occurred';
 

@@ -33,7 +33,7 @@ class AuthenticatedSessionController extends Controller
 
 //        Check if account is active before logging user in
         if (!Auth::user()->isActive())
-            return $this->destroy($request)->with('error', trans('auth.inactive'));
+            return $this->destroy($request)->with('error', 'User is inactive.');
 
         $request->session()->regenerate();
 

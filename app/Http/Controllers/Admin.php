@@ -53,7 +53,7 @@ class Admin extends Controller
 
             $user->save();
 
-            return back()->with('status', $user->full_name . ' is now ' . strtoupper($user->status));
+            return back()->with('success', $user->full_name . ' is now ' . strtoupper($user->status));
         }
         catch (\Exception $exception) {
             return back()->with('error', $this->getExceptionMsg($exception));

@@ -2,9 +2,9 @@
 
 function statusColor(string|bool $status): string {
     return match ($status) {
-        'pending', 'NOT STARTED' => 'yellow',
-        'active', 'COMPLETED', true  => 'green',
-        'failed', false  => 'red',
+        'pending', 'PENDING' => 'yellow',
+        'active', 'DONE', true  => 'green',
+        'failed', false, 'OVERDUE'  => 'red',
         default => 'indigo'
     };
 }

@@ -65,7 +65,7 @@
                                             @if($task->status == $status) selected @endif
                                             @if(old('status') == $status) selected @endif
                                     >
-                                        Not Started
+                                        {{ $status }}
                                     </option>
                                 @endforeach
                             </select>
