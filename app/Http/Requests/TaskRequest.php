@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Helpers\General;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -33,7 +34,7 @@ class TaskRequest extends FormRequest
         return [
             'title'     => 'required|string',
             'category'  => ['required', Rule::exists('categories', 'slug')->where('is_active', true)],
-            'status'    => 'required|in:ONGOING,NOT STARTED',
+            'status'    => ['required', Rule::in(General::STATUSES)],
             'deadline'  => 'required|date'
         ];
     }
@@ -43,6 +44,7 @@ class TaskRequest extends FormRequest
         return [
             'title'     => 'nullable|string',
             'category'  => 'nullable|exists:categories,slug',
+            'status'    => ['required', Rule::in(General::STATUSES)],
             'deadline'  => 'nullable|date'
         ];
     }
