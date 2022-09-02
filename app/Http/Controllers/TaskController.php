@@ -19,7 +19,7 @@ class TaskController extends Controller
 
     public function create()
     {
-        $categories = Category::query()->orderBy('name')->get();
+        $categories = Category::query()->orderBy('name')->isActive()->get();
 
         return view('pages.new-task', compact('categories'));
     }
@@ -31,7 +31,7 @@ class TaskController extends Controller
             $data['deadline'] = $this->getDate($request->deadline);
             $data['slug'] = genUniqueSlug($request->title);
 
-            $category = Category::slug($request->category)->first();
+            $category = Category::slug($request->category)->isActive()->first();
             $data['category_id'] = $category->id;
 
             auth()->user()->tasks()->create($data);

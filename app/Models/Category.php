@@ -30,4 +30,9 @@ class Category extends Model
     {
         return $query->where('slug', $value);
     }
+
+    public function scopeIsActive($query)
+    {
+        return $query->where('is_active', true);
+    }
 }
