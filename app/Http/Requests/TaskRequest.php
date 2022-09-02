@@ -39,6 +39,10 @@ class TaskRequest extends FormRequest
 
     private function updateTask(): array
     {
-        return [];
+        return [
+            'title'     => 'nullable|string',
+            'category'  => 'nullable|exists:categories,slug',
+            'deadline'  => 'nullable|date'
+        ];
     }
 }

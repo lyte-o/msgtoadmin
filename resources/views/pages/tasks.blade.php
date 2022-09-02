@@ -78,7 +78,7 @@
                                             </td>
 
                                             <td class="border-b border-slate-100 py-4 px-6">
-                                                <x-link-button href="{{ route('tasks.create') }}" class="mx-2 p-1">{{ __('Edit') }}</x-link-button>
+                                                <x-link-button href="{{ route('tasks.edit', $task->slug) }}" class="mx-2 p-1">{{ __('Update') }}</x-link-button>
                                                 <form action="{{ route('tasks.delete', $task->slug) }}" method="post" class="inline mt-1">
                                                     @method('DELETE')
                                                     @csrf

@@ -1,5 +1,6 @@
 @props(['status' => null])
 
+{{--{{ dd(session('status')) }}--}}
 @if (session()->has(['status', 'success']))
     <div id="status-alert" {{ $attributes->merge(['class' => 'p-4 mb-4 text-sm font-semibold text-green-700 bg-green-100 rounded-lg']) }} role="alert">
         {{ session('status') ?? session('success') }}
