@@ -64,7 +64,9 @@ class TaskController extends Controller
 
             if (!empty($update_data)) {
                 $task->update($update);
-                return redirect()->route('tasks.index')->with('success', 'Task Updated!');
+
+                $route_name = auth()->user()->role == 'admin' ? 'manage-tasks' : 'tasks.index';
+                return redirect()->route($route_name)->with('success', 'Task Updated!');
             }
             else {
                 return back()->with('status', 'You have not made any changes.');

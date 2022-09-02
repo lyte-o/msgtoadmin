@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Message;
+use App\Models\Task;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -49,5 +50,12 @@ class Admin extends Controller
         catch (\Exception $exception) {
             return back()->with('error', $this->getExceptionMsg($exception));
         }
+    }
+
+    public function tasks()
+    {
+        $tasks = Task::query()->latest()->get();
+
+        return view('pages.admin.tasks', compact('tasks'));
     }
 }

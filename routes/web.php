@@ -28,15 +28,20 @@ Route::middleware('auth','active', 'role:user')->group(function () {
         Route::get('/', 'index')->name('index');
         Route::get('/add-new-task', 'create')->name('create');
         Route::post('/submit-new-task', 'store')->name('store');
-        Route::get('/{task}/edit-task', 'edit')->name('edit');
-        Route::put('/{task}/update-task', 'update')->name('update');
-        Route::delete('/{task}/delete-task', 'delete')->name('delete');
     });
 });
+
+Route::controller(TaskController::class)->prefix('tasks')->name('tasks.')->group(function () {
+    Route::get('/{task}/edit-task', 'edit')->name('edit')->middleware('auth');
+    Route::put('/{task}/update-task', 'update')->name('update')->middleware('auth');
+    Route::delete('/{task}/delete-task', 'delete')->name('delete')->middleware('auth');
+});
+
 
 Route::middleware('auth', 'role:admin')->group(function () {
     Route::prefix('admin')->group(function () {
         Route::get('/', [Admin::class, 'index'])->name('admin.index');
+        Route::get('/manage-tasks', [Admin::class, 'tasks'])->name('manage-tasks');
         Route::get('/manage-users', [Admin::class, 'manageUsers'])->name('manage-users');
         Route::post('/manage-users/update-status', [Admin::class, 'updateStatus'])->name('update-status');
 

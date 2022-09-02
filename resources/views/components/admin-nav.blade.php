@@ -12,6 +12,10 @@
     <x-responsive-nav-link :href="route('admin.category.index')" :active="request()->routeIs('admin.category.index')">
         {{ __('Manage Categories') }}
     </x-responsive-nav-link>
+
+    <x-responsive-nav-link :href="route('manage-tasks')" :active="request()->routeIs('manage-tasks')">
+        {{ __('Manage Tasks') }}
+    </x-responsive-nav-link>
 @else
     <x-nav-link :href="route('admin.index')" :active="request()->routeIs('admin.index')">
         {{ __('Admin Dashboard') }}
@@ -23,5 +27,9 @@
 
     <x-nav-link :href="route('admin.category.index')" :active="request()->routeIs('admin.category.index')">
         {{ __('Manage Categories') }}
+    </x-nav-link>
+
+    <x-nav-link :href="route('manage-tasks')" :active="request()->routeIs('manage-tasks')">
+        {{ __('Manage Tasks') }}
     </x-nav-link>
 @endif
