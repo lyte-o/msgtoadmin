@@ -101,7 +101,7 @@
                                                     @csrf
 
                                                     <a onclick="event.preventDefault();
-                                                this.closest('form').submit();"
+                                                            this.closest('form').submit();"
                                                        class="btn btn-link inline-flex justify-center items-center px-4 bg-red-400 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-700 active:bg-red-900 focus:outline-none cursor-pointer focus:border-red-900 focus:ring ring-red-300 disabled:opacity-25 transition ease-in-out duration-150 mx-2 p-1">Delete</a>
                                                 </form>
                                             </td>
