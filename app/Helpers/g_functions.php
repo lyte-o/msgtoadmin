@@ -26,5 +26,11 @@ function genUniqueSlug(string $value)
     $slug = str_replace($rand_array, ' ', $slug) . $rand;
 
     return str_shuffle($slug);
+}
 
+function isAdmin(\App\Models\User $user = null): bool
+{
+    $user = $user ?? auth()->user();
+
+    return $user->role == 'admin';
 }

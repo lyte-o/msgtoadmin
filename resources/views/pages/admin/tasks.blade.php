@@ -6,12 +6,16 @@
         </h2>
     </x-slot>
 
-    <div class="py-10 mx-3">
+    @section('breadcrumbs')
+        <x-breadcrumb current_page="Tasks" />
+    @endsection
+
+    <div class="pb-10 mx-3">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
             <x-auth-session-status class="mb-7 text-center"/>
 
-            <section class="mt-7 ">
+            <section class="mt-4 ">
                 <div class="px-4 py-2 text-sm text-indigo-600 font-bold">
                     List of Tasks
                 </div>

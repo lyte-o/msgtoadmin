@@ -6,7 +6,11 @@
         </h2>
     </x-slot>
 
-    <div class="py-10 mx-3">
+    @section('breadcrumbs')
+        <x-breadcrumb current_page="Manage Categories" />
+    @endsection
+
+    <div class="pb-10 mx-3">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
             <x-auth-session-status class="mb-7 text-center"/>
