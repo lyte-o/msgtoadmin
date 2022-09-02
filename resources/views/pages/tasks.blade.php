@@ -6,7 +6,11 @@
         </h2>
     </x-slot>
 
-    <div class="py-10 mx-3">
+    @section('breadcrumbs')
+        <x-breadcrumb current_page="Tasks" />
+    @endsection
+
+    <div class="pb-10 pt-2 mx-3">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
             <x-auth-session-status class="mb-7 text-center"/>
@@ -21,7 +25,7 @@
                             <h3 class="text-xl font-semibold">{{ __('Showing the list of all your tasks.') }}</h3>
                         </div>
                         <div>
-                            <x-link-button href="{{ route('tasks.create') }}" class="m-3 p-4 px-6 sm:p-3">{{ __('Add New Task') }}</x-link-button>
+                            <x-link-button href="{{ route('tasks.create') }}" class="my-3 sm:mx-3 p-4 px-6 sm:p-3">{{ __('Add New Task') }}</x-link-button>
                         </div>
                     </div>
                     <div class="pt-6 mt-4">

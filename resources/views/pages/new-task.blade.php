@@ -5,9 +5,13 @@
         </h2>
     </x-slot>
 
+    @section('breadcrumbs')
+        <x-breadcrumb current_page="Add new task" :previous_pages="[['name' => 'Tasks', 'link' => route('tasks.index')]]" />
+    @endsection
+
     <div class="min-h-screen flex flex-col items-center bg-gray-100 mx-3">
 
-        <div class="w-full sm:max-w-md mt-6 px-18 py-4 ">
+        <div class="w-full sm:max-w-md px-18 py-2 ">
 
             <x-auth-session-status class="mt-5 text-center"/>
 

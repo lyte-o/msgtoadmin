@@ -29,6 +29,8 @@
                 </div>
             </header>
 
+                @yield('breadcrumbs')
+
             <!-- Page Content -->
             <main>
                 {{ $slot }}
