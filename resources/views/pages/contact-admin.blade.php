@@ -9,11 +9,10 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="sm:flex justify-between items-center block bg-white mb-10 px-6 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="py-6 pl-4 pr-0">
-                    <p>{{__('Hello')}} <span class="font-bold">{{ ucwords(auth()->user()->full_name) }}</span>!</p>
-                    <p class="text-slate-600 mt-1">{{__("You can now send messages to the Admin.")}}</p>
+                    <p class="font-bold text-indigo-600">Contact Admin</p>
                 </div>
 
-                <div>
+                <div class="mr-3">
                     <x-link-button href="{{ route('create-message') }}" class="m-3 p-4 px-6 sm:p-3">{{ __('New Message') }}</x-link-button>
                 </div>
             </div>
