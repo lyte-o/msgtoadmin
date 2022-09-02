@@ -25,20 +25,20 @@
                     </div>
                     <div class="sm:col-span-6  lg:col-span-3 bg-white mb-10 px-6 overflow-hidden shadow-sm sm:rounded-lg">
                         <div class="py-3 pl-4 pr-0 flex items-center justify-between">
-                            <p class="text-slate-500 my-2 uppercase font-semibold items-center">{{__("Tasks not Started")}}</p>
-                            <span class="font-bold text-yellow-500 text-2xl">{{ $count['tasks']['not_started'] ?? 0 }}</span>
-                        </div>
-                    </div>
-                    <div class="sm:col-span-6  lg:col-span-3 bg-white mb-10 px-6 overflow-hidden shadow-sm sm:rounded-lg">
-                        <div class="py-3 pl-4 pr-0 flex items-center justify-between">
-                            <p class="text-slate-500 my-2 uppercase font-semibold items-center">{{__("Ongoing Tasks")}}</p>
-                            <span class="font-bold text-indigo-600 text-2xl">{{ $count['tasks']['ongoing'] ?? 0 }}</span>
+                            <p class="text-slate-500 my-2 uppercase font-semibold items-center">{{__("Pending Tasks")}}</p>
+                            <span class="font-bold text-yellow-500 text-2xl">{{ $count['tasks']['pending'] ?? 0 }}</span>
                         </div>
                     </div>
                     <div class="sm:col-span-6  lg:col-span-3 bg-white mb-10 px-6 overflow-hidden shadow-sm sm:rounded-lg">
                         <div class="py-3 pl-4 pr-0  flex justify-between items-center">
-                            <p class="text-slate-500 my-2 uppercase font-semibold">{{__("Completed Tasks")}}</p>
-                            <span class="font-bold text-green-600 text-2xl">{{ $count['tasks']['completed'] ?? 0 }}</span>
+                            <p class="text-slate-500 my-2 uppercase font-semibold">{{__("Done Tasks")}}</p>
+                            <span class="font-bold text-green-600 text-2xl">{{ $count['tasks']['done'] ?? 0 }}</span>
+                        </div>
+                    </div>
+                    <div class="sm:col-span-6  lg:col-span-3 bg-white mb-10 px-6 overflow-hidden shadow-sm sm:rounded-lg">
+                        <div class="py-3 pl-4 pr-0 flex items-center justify-between">
+                            <p class="text-slate-500 my-2 uppercase font-semibold items-center">{{__("Overdue Tasks")}}</p>
+                            <span class="font-bold text-red-600 text-2xl">{{ $count['tasks']['overdue'] ?? 0 }}</span>
                         </div>
                     </div>
                 </div>
