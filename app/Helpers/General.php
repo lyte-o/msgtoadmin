@@ -5,6 +5,9 @@ namespace App\Helpers;
 
 class General
 {
+
+    const STATUSES = ['PENDING', 'DONE', 'OVERDUE'];
+
     public static function countTask(bool $is_admin = false): array
     {
         $tasks = !$is_admin ? auth()->user()->tasks() : \App\Models\Task::query();

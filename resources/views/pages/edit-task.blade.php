@@ -60,18 +60,14 @@
                             <x-label for="status" class="font-semibold pb-3" :value="__('Status')" />
 
                             <select id="status" name="status" class="block w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
-                                <option value="NOT STARTED"
-                                        @if($task->status == 'NOT STARTED') selected @endif
-                                        @if(old('status') == 'NOT STARTED') selected @endif
-                                >
-                                    Not Started
-                                </option>
-                                <option value="ONGOING"
-                                        @if($task->status == 'ONGOING') selected @endif
-                                        @if(old('status') == 'ONGOING') selected @endif
-                                >
-                                    Ongoing
-                                </option>
+                                @foreach(\App\Helpers\General::STATUSES as $status)
+                                    <option value="{{ $status }}"
+                                            @if($task->status == $status) selected @endif
+                                            @if(old('status') == $status) selected @endif
+                                    >
+                                        Not Started
+                                    </option>
+                                @endforeach
                             </select>
                             <x-form-input-error :inputName="$error = 'status'" />
                         </div>

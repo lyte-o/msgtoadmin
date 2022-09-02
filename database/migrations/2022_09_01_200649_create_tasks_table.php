@@ -19,7 +19,7 @@ return new class extends Migration
             $table->unsignedInteger('category_id');
             $table->string('title');
             $table->string('slug');
-            $table->enum('status', ['NOT STARTED', 'ONGOING', 'COMPLETED'])->default('NOT STARTED');
+            $table->enum('status', \App\Helpers\General::STATUSES)->default('pending');
             $table->timestamp('deadline');
             $table->timestamps();
         });

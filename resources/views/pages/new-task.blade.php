@@ -53,8 +53,9 @@
                             <x-label for="status" class="font-semibold pb-3" :value="__('Status')" />
 
                             <select id="status" name="status" class="block w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
-                                <option value="NOT STARTED" selected> Not Started</option>
-                                <option value="ONGOING" @if(old('status') == 'ONGOING') selected @endif> Ongoing</option>
+                                @foreach(\App\Helpers\General::STATUSES as $status)
+                                    <option value="{{ $status }}" @if(old('status') == $status) selected @endif> {{ $status }}</option>
+                                @endforeach
                             </select>
                             <x-form-input-error :inputName="$error = 'status'" />
                         </div>
