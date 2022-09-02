@@ -1,29 +1,31 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
+            {{ __('Contact Admin') }}
         </h2>
     </x-slot>
 
-    <div class="py-12 mx-3">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="sm:flex justify-between items-center block bg-white mb-10 px-6 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="py-6 pl-4 pr-0">
-                    <p class="font-bold text-indigo-600">Contact Admin</p>
-                </div>
+    @section('breadcrumbs')
+        <x-breadcrumb current_page="Contact Admin" />
+    @endsection
 
-                <div class="mr-3">
-                    <x-link-button href="{{ route('create-message') }}" class="m-3 p-4 px-6 sm:p-3">{{ __('New Message') }}</x-link-button>
-                </div>
-            </div>
+    <div class="pb-12 mx-3">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
             <x-auth-session-status class="text-center"/>
 
-            <div class="py-6 mt-7">
-                <div class="bg-white p-6 overflow-hidden shadow-sm sm:rounded-lg">
-                    <div class="pt-3 pb-7 border-b">
-                        <h3 class="text-xl font-semibold">{{__('Showing all your messages sent to the Admin.')}}</h3>
+            <div class="pb-6 mt-6">
+                <div class="bg-white px-6 py-4 overflow-hidden shadow-sm sm:rounded-lg">
+                    <div class="sm:flex justify-between items-center block px-6 pb-4 border-b">
+                        <div class="">
+                            <h3 class="text-xl font-semibold">{{__('Showing all your messages sent to the Admin.')}}</h3>
+                        </div>
+
+                        <div class="mr-3">
+                            <x-link-button href="{{ route('create-message') }}" class="m-3 p-4 px-6 sm:p-3">{{ __('New Message') }}</x-link-button>
+                        </div>
                     </div>
+
                     <div class="pt-6 mt-4 mb-3">
                         <div class="overflow-x-auto relative rounded-md">
                             <table class="min-w-max md:w-full text-sm text-left text-gray-500">

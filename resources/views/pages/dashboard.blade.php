@@ -9,7 +9,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="px-4 py-2 text-sm text-slate-600">
                 <p>{{__('Hello')}} <span class=" font-bold">{{ ucwords(auth()->user()->full_name) }}</span>!</p>
-                <p>Welcome to your task Manage.</p>
+                <p class="mt-2">Welcome to your task Manager.</p>
             </div>
 
             <section class="mt-5">
@@ -40,7 +40,7 @@
 
             <x-auth-session-status class="text-center"/>
 
-            <section class="mt-7 ">
+            <section class="">
                 <div class="px-4 py-2 text-sm text-indigo-600 font-bold">
                     Recent Tasks
                 </div>

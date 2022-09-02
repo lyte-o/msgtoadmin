@@ -5,7 +5,11 @@
         </h2>
     </x-slot>
 
-    <div class="min-h-screen flex flex-col items-center pt-16 sm:pt-0 bg-gray-100 mx-3">
+    @section('breadcrumbs')
+        <x-breadcrumb current_page="New Message" :previous_pages="[['name' => 'Contact Admin', 'link' => route('contact-admin')]]" />
+    @endsection
+
+    <div class="min-h-screen flex flex-col items-center bg-gray-100 mx-3">
 
         <div class="w-full sm:max-w-md mt-6 px-18 py-4 ">
             <x-auth-session-status class="mt-5 text-center"/>
