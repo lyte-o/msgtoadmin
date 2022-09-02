@@ -11,7 +11,7 @@ class Message extends Model
     use HasFactory;
 
     protected $fillable = [
-//        'body',
+        'body',
     ];
 
     public function user(): BelongsTo
