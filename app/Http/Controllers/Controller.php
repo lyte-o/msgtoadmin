@@ -14,6 +14,7 @@ class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
     const PG_NUM = 30;
+    const LIMIT  = 5;
 
     #[ArrayShape(['error' => "string"])]
     protected function getExceptionMsg(\Exception $exception): array

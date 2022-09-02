@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\General;
 use App\Models\Message;
 use App\Models\Task;
 use App\Models\User;
@@ -11,9 +12,16 @@ class Admin extends Controller
 {
     public function index()
     {
-        $messages = Message::query()->latest()->paginate(self::PG_NUM);
+        $messages = Message::query()->latest()->get();
+        $tasks = Task::query()->latest()->limit(self::LIMIT)->get();
+        $users = User::query()->where('role', 'user')->latest()->limit(self::LIMIT)->get();
 
-        return view('pages.admin.dashboard', compact('messages'));
+        $count  = [
+            'users' => User::query()->where('role', 'user')->count(),
+            'tasks' => General::countTask(true)
+        ];
+
+        return view('pages.admin.dashboard', compact('messages', 'tasks', 'users', 'count'));
     }
 
     public function manageUsers(Request $request)

@@ -38,7 +38,6 @@
                 </div>
             </section>
 
-
             <x-auth-session-status class="text-center"/>
 
             <section class="mt-7 ">
