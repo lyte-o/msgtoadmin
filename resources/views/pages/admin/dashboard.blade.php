@@ -146,7 +146,7 @@
                                     <th scope="col" class="py-3 px-6">
                                         Phone
                                     </th>
-                                    <th scope="col" class="py-3 px-6">
+                                    <th scope="" class="py-3 px-6">
                                         Status
                                     </th>
                                     <th scope="col" class="py-3 px-6">
