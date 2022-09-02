@@ -61,7 +61,8 @@
                                         $n = 0;
                                     @endphp
                                     @foreach($tasks as $task)
-                                        {{ $n++ }}
+                                        @php $n++ @endphp
+
                                         <tr>
                                             <th scope="row" class="border-b border-slate-100 py-4 px-6 font-medium text-gray-900 whitespace-nowrap">{{ $n }}</th>
 
@@ -71,7 +72,7 @@
                                             </td>
                                             <td class="border-b border-slate-100 py-4 px-6">{{ $task->deadline->format('Y-m-d H:i') }}</td>
                                             <td class="border-b border-slate-100 py-4 px-6">
-                                                <span class="bg-{{ statusColor($task->status) }}-100 text-{{statusColor($task->status)}}-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded mr-2">
+                                                <span class="bg-{{ statusColor($task->status) }}-100 text-{{statusColor($task->status)}}-800 text-xs font-semibold inline-flex items-center px-2.5 py-0.5 rounded mr-2">
                                                     {{ $task->status }}
                                                 </span>
                                             </td>

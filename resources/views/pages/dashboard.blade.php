@@ -7,29 +7,36 @@
 
     <div class="py-12 mx-3">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-
-            <p class="px-4 py-2 text-sm text-indigo-600">{{__('Hello')}} <span class=" font-bold">{{ ucwords(auth()->user()->full_name) }}</span>!</p>
-
-            <div class="block md:grid md:grid-cols-12 gap-3 lg:gap-10 items-center">
-                <div class="md:col-span-4 bg-white mb-10 px-6 overflow-hidden shadow-sm sm:rounded-lg">
-                    <div class="py-3 pl-4 pr-0 flex justify-between">
-                        <p class="text-slate-500 my-2 uppercase font-semibold items-center">{{__("Tasks not Started")}}</p>
-                        <span class="font-bold text-yellow-500 text-2xl">{{ $data['not_started'] }}</span>
-                    </div>
-                </div>
-                <div class="md:col-span-4 bg-white mb-10 px-6 overflow-hidden shadow-sm sm:rounded-lg">
-                    <div class="py-3 pl-4 pr-0 flex justify-between">
-                        <p class="text-slate-500 my-2 uppercase font-semibold items-center">{{__("Ongoing Tasks")}}</p>
-                        <span class="font-bold text-indigo-600 text-2xl">{{ $data['ongoing'] }}</span>
-                    </div>
-                </div>
-                <div class="md:col-span-4 bg-white mb-10 px-6 overflow-hidden shadow-sm sm:rounded-lg">
-                    <div class="py-3 pl-4 pr-0  flex justify-between items-center">
-                        <p class="text-slate-500 my-2 uppercase font-semibold">{{__("Completed Tasks")}}</p>
-                        <span class="font-bold text-green-600 text-2xl">{{ $data['completed'] }}</span>
-                    </div>
-                </div>
+            <div class="px-4 py-2 text-sm text-slate-600">
+                <p>{{__('Hello')}} <span class=" font-bold">{{ ucwords(auth()->user()->full_name) }}</span>!</p>
+                <p>Welcome to your task Manage.</p>
             </div>
+
+            <section class="mt-5">
+                <div class="px-4 py-2 text-sm text-indigo-600 font-bold">
+                    Total Tasks
+                </div>
+                <div class="block md:grid md:grid-cols-12 gap-3 lg:gap-10 items-center">
+                    <div class="md:col-span-4 bg-white mb-10 px-6 overflow-hidden shadow-sm sm:rounded-lg">
+                        <div class="py-3 pl-4 pr-0 flex justify-between">
+                            <p class="text-slate-500 my-2 uppercase font-semibold items-center">{{__("Tasks not Started")}}</p>
+                            <span class="font-bold text-yellow-500 text-2xl">{{ $count['not_started'] ?? 0 }}</span>
+                        </div>
+                    </div>
+                    <div class="md:col-span-4 bg-white mb-10 px-6 overflow-hidden shadow-sm sm:rounded-lg">
+                        <div class="py-3 pl-4 pr-0 flex justify-between">
+                            <p class="text-slate-500 my-2 uppercase font-semibold items-center">{{__("Ongoing Tasks")}}</p>
+                            <span class="font-bold text-indigo-600 text-2xl">{{ $count['ongoing'] ?? 0 }}</span>
+                        </div>
+                    </div>
+                    <div class="md:col-span-4 bg-white mb-10 px-6 overflow-hidden shadow-sm sm:rounded-lg">
+                        <div class="py-3 pl-4 pr-0  flex justify-between items-center">
+                            <p class="text-slate-500 my-2 uppercase font-semibold">{{__("Completed Tasks")}}</p>
+                            <span class="font-bold text-green-600 text-2xl">{{ $count['completed'] ?? 0 }}</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
 
             <x-auth-session-status class="text-center"/>
@@ -76,7 +83,7 @@
                                         $n = 0;
                                     @endphp
                                     @foreach($recents as $task)
-                                        {{ $n++ }}
+                                        @php $n++ @endphp
                                         <tr>
                                             <th scope="row" class="border-b border-slate-100 py-4 px-6 font-medium text-gray-900 whitespace-nowrap">{{ $n }}</th>
 
@@ -86,7 +93,7 @@
                                             </td>
                                             <td class="border-b border-slate-100 py-4 px-6">{{ $task->deadline->format('Y-m-d H:i') }}</td>
                                             <td class="border-b border-slate-100 py-4 px-6">
-                                                <span class="bg-{{ statusColor($task->status) }}-100 text-{{statusColor($task->status)}}-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded mr-2">
+                                                <span class="bg-{{ statusColor($task->status) }}-100 text-{{statusColor($task->status)}}-800 text-xs font-semibold inline-flex items-center px-2.5 py-0.5 rounded mr-2">
                                                     {{ $task->status }}
                                                 </span>
                                             </td>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Task;
 use Illuminate\Http\Request;
 
 class Dashboard extends Controller
@@ -11,13 +12,18 @@ class Dashboard extends Controller
         $tasks = auth()->user()->tasks();
         $recents = auth()->user()->tasks()->latest()->limit(5)->get();
 
-        $data = [];
 
-        $data['not_started'] = $tasks->where('status', 'NOT STARTED')->count();
-        $data['ongoing'] = $tasks->where('status', 'ONGOING')->count();
-        $data['completed'] = $tasks->where('status', 'COMPLETED')->count();
+        $task_count = $tasks->groupBy('status')
+        ->selectRaw('count(*) as total, status')
+        ->get();;
 
-        return view('pages.dashboard', compact('recents', 'data'));
+        $count = [];
+        $task_count->each(function ($value) use (&$count) {
+            $key = str($value->status)->slug('_')->toString();
+            $count[$key] = $value->total;
+        });
+
+        return view('pages.dashboard', compact('recents', 'count'));
     }
 
     public function contactAdmin()
